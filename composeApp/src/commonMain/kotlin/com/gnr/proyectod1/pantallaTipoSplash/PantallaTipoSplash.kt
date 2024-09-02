@@ -13,7 +13,6 @@ class PantallaTipoSplash : Screen {
 
     @Composable
     override fun Content() {
-
         Column(
             modifier = Modifier.fillMaxSize().background(color = Color.Black),
             horizontalAlignment = Alignment.CenterHorizontally
