@@ -45,7 +45,7 @@ class AccesoADeportes : Screen {
                         navigator.push(BaloncestoScreen())
                     }) {
                         Box(modifier = Modifier.fillMaxSize()) {
-                            Text("BALONCESTO")
+                            Text("Baloncesto")
                         }
                     }
                 }
@@ -55,7 +55,7 @@ class AccesoADeportes : Screen {
                         navigator.push(BeisbolScreen())
                     }) {
                         Box(modifier = Modifier.fillMaxSize()) {
-                            Text("BEISBOL")
+                            Text("Beisbol")
                         }
                     }
                 }
@@ -68,7 +68,7 @@ class AccesoADeportes : Screen {
                         navigator.push(Formula1Screen())
                     }) {
                         Box(modifier = Modifier.fillMaxSize()) {
-                            Text("FORMULA1")
+                            Text("Formula 1")
                         }
                     }
                 }
@@ -78,7 +78,7 @@ class AccesoADeportes : Screen {
                         navigator.push(FutbolScreen())
                     }) {
                         Box(modifier = Modifier.fillMaxSize()) {
-                            Text("FUTBOL")
+                            Text("Futbol")
                         }
                     }
                 }
@@ -90,7 +90,7 @@ class AccesoADeportes : Screen {
                         navigator.push(MmaScreen())
                     }) {
                         Box(modifier = Modifier.fillMaxSize()) {
-                            Text("Mma")
+                            Text("MMA")
                         }
                     }
                 }
