@@ -22,6 +22,10 @@ object NetworkUtils {
 
 
 
+// val url: 'https://v1.formula-1.api-sports.io/competitions',  VARIABLE FOR URL
+
+
+
 
 
 

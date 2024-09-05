@@ -51,51 +51,6 @@ class AccesoADeportes : Screen {
                     }
                 }
                 Spacer(modifier = Modifier.weight(0.05f))
-                Box(modifier = Modifier.weight(1f).height(150.dp)) {
-                    Button(onClick = {
-                        navigator.push(BeisbolScreen())
-                    }) {
-                        Box(modifier = Modifier.fillMaxSize()) {
-                            Text("Beisbol")
-                        }
-                    }
-                }
-
-            }
-            Spacer(modifier = Modifier.height(10.dp))
-            Row(modifier = Modifier.padding(horizontal = 20.dp)) {
-                Box(modifier = Modifier.weight(1f).height(150.dp)) {
-                    Button(onClick = {
-                        navigator.push(Formula1Screen())
-                    }) {
-                        Box(modifier = Modifier.fillMaxSize()) {
-                            Text("Formula 1")
-                        }
-                    }
-                }
-                Spacer(modifier = Modifier.weight(0.05f))
-                Box(modifier = Modifier.weight(1f).height(150.dp)) {
-                    Button(onClick = {
-                        navigator.push(FutbolScreen())
-                    }) {
-                        Box(modifier = Modifier.fillMaxSize()) {
-                            Text("Futbol")
-                        }
-                    }
-                }
-            }
-            Spacer(modifier = Modifier.height(10.dp))
-            Row(modifier = Modifier.padding(horizontal = 20.dp)) {
-                Box(modifier = Modifier.weight(1f).height(150.dp)) {
-                    Button(onClick = {
-                        navigator.push(MmaScreen())
-                    }) {
-                        Box(modifier = Modifier.fillMaxSize()) {
-                            Text("MMA")
-                        }
-                    }
-                }
-                Spacer(modifier = Modifier.weight(0.05f))
                 Spacer(modifier = Modifier.weight(1f))
             }
         }

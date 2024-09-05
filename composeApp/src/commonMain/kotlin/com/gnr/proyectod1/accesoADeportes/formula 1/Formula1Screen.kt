@@ -20,6 +20,7 @@ class Formula1Screen : Screen {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text("Formula1Screen", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+
         }
     }
 }
