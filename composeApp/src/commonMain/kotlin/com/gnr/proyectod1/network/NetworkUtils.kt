@@ -15,7 +15,7 @@ object NetworkUtils {
             json(json = Json { ignoreUnknownKeys = true }, ContentType.Any)
         }
         defaultRequest {
-            header("x-apisports-key", "afe5fc65fe2756c7390d4ec0224c23f3")
+            header("x-rapidapi-key", "afe5fc65fe2756c7390d4ec0224c23f3")
         }
     }
 }
