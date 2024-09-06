@@ -1,4 +1,4 @@
-package com.gnr.proyectod1.accesoADeportes
+package com.gnr.proyectod1.accesoDeportes
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -21,11 +20,7 @@ import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.gnr.proyectod1.accesoADeportes.baloncesto.BaloncestoScreen
-import com.gnr.proyectod1.accesoADeportes.beisbol.BeisbolScreen
-import com.gnr.proyectod1.accesoADeportes.formula.Formula1Screen
-import com.gnr.proyectod1.accesoADeportes.futbol.FutbolScreen
-import com.gnr.proyectod1.accesoADeportes.mma.MmaScreen
+import com.gnr.proyectod1.accesoDeportes.iu.BaloncestoScreen
 
 class AccesoADeportes : Screen {
     @Composable

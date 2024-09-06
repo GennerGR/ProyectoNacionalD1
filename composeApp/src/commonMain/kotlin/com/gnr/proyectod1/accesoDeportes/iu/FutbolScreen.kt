@@ -1,4 +1,4 @@
-package com.gnr.proyectod1.accesoADeportes.formula
+package com.gnr.proyectod1.accesoDeportes.iu
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -12,15 +12,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 
-class Formula1Screen : Screen {
+class FutbolScreen : Screen {
     @Composable
     override fun Content() {
         Column(
-            modifier = Modifier.fillMaxSize().background(color = Color.Magenta),
+            modifier = Modifier.fillMaxSize().background(color = Color.Green),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Formula1Screen", fontSize = 22.sp, fontWeight = FontWeight.Bold)
-
+            Text("FutbolScreen", fontSize = 22.sp, fontWeight = FontWeight.Bold)
         }
     }
 }

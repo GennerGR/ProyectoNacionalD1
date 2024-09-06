@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.gnr.proyectod1.accesoADeportes.AccesoADeportes
+import com.gnr.proyectod1.accesoDeportes.AccesoADeportes
 
 class PantallaTipoSplash : Screen {
 

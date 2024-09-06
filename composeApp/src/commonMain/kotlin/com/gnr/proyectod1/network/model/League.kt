@@ -3,6 +3,12 @@ package com.gnr.proyectod1.network.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Season (
-    val response:List<Int>
+data class League (
+    val id:Int,
+    val name:String,
+    val type:String
 )
+
+
+
+

@@ -1,4 +1,4 @@
-package com.gnr.proyectod1.accesoADeportes.futbol
+package com.gnr.proyectod1.accesoDeportes.iu
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -11,16 +11,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
-import proyectod1.composeapp.generated.resources.Res
 
-class FutbolScreen : Screen {
+class BeisbolScreen : Screen {
     @Composable
     override fun Content() {
         Column(
-            modifier = Modifier.fillMaxSize().background(color = Color.Green),
+            modifier = Modifier.fillMaxSize().background(color = Color.White),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("FutbolScreen", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+            Text("BeisbolScreen", fontSize = 22.sp, fontWeight = FontWeight.Bold)
         }
     }
 }
