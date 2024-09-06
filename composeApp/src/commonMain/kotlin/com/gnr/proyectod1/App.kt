@@ -19,7 +19,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Preview
 fun App() {
     MaterialTheme {
-        Navigator(screen = PantallaTipoSplash()) { navigator: Navigator ->
+        Navigator(screen = SportsLeagueScreen()) { navigator: Navigator ->
             SlideTransition(navigator)
         }
     }

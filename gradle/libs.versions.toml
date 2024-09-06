@@ -16,6 +16,7 @@ junit = "4.13.2"
 kotlin = "2.0.0"
 voyager = "1.1.0-beta02"
 ktor = "2.3.12"
+roomKtx = "2.6.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -38,6 +39,7 @@ ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "kto
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor"}
 ktor-client-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor"}
 kotlin-serialization ={ module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

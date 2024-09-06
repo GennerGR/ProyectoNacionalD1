@@ -94,4 +94,7 @@ android {
         debugImplementation(compose.uiTooling)
     }
 }
+dependencies {
+    implementation(libs.androidx.room.ktx)
+}
 
