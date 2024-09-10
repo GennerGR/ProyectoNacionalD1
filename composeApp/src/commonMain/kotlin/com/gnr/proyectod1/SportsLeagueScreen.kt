@@ -1,18 +1,19 @@
 package com.gnr.proyectod1
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Button
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -29,77 +30,80 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.gnr.proyectod1.network.NetworkUtils.httpClient
 import com.gnr.proyectod1.network.model.League
+import com.gnr.proyectod1.network.model.LeagueResponse
 import io.ktor.client.call.body
 import io.ktor.client.request.get
+import io.ktor.client.request.header
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
 
-class SportsLeagueScreen : Screen {
+class SportsLeagueScreen (private val deporte:String): Screen {
 
     @Composable
     override fun Content() {
 
         val navigator = LocalNavigator.currentOrThrow
 
-        var leagueList by remember { mutableStateOf<List<League>>(emptyList()) }
-        var filteredLeagueList by remember { mutableStateOf<List<League>>(emptyList()) }
-        var searchQuery by remember { mutableStateOf("") }
+        var leagueList by remember { mutableStateOf<List<League>>(emptyList())}
+        var loading by remember { mutableStateOf(true)}
 
-        LaunchedEffect(Unit) {
-            getLeagueList { leagues ->
+        LaunchedEffect(deporte) {
+            getLeagues(deporte) {leagues ->
                 leagueList = leagues
-                filteredLeagueList = leagues
+                loading = false
             }
         }
 
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(
-                value = searchQuery,
-                onValueChange = { query ->
-                    searchQuery = query
-                    filteredLeagueList = if (query.isBlank()) {
-                        leagueList
-                    } else {
-                        leagueList.filter { it.name.contains(query, ignoreCase = true) }
+        Column (modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally ) {
+            if (loading) {
+                Text("cargando ligas...", color = Color.Black, modifier = Modifier.padding(16.dp))
+            } else {
+                Spacer(modifier = Modifier.height(16.dp))
+                LazyVerticalGrid(
+                    GridCells.Fixed(2),
+                    contentPadding = PaddingValues(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    //
+                    items(leagueList) {  League ->
+                        Box(
+                            modifier = Modifier.background(color = Color.Black).padding(8.dp).fillMaxWidth()
+                        ) {
+                            Column {
+                                Text(League.name, color = Color.White)
+                            }
+                        }
                     }
-                },
-                label = { Text("Buscar liga") }
-            )
-
-            Spacer(modifier = Modifier.weight(0.1f))
-
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                contentPadding = PaddingValues(16.dp)
-            ) {
-                items(filteredLeagueList) { league ->
-                    Box(modifier = Modifier.background(Color.Black).padding(16.dp)) {
-                        Text(league.name, color = Color.White)
-                    }
-                    Spacer(modifier = Modifier.height(16.dp))
                 }
             }
-
             Spacer(modifier = Modifier.height(16.dp))
-
             Button(onClick = {
                 navigator.pop()
             }) {
-                Text("Volver")
+                Text("Back")
             }
+            Spacer(modifier = Modifier.weight(0.1f))
         }
     }
-    private fun getLeagueList(onSuccessResponse: (List<League>) -> Unit) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val url = "https://v1.basketball.api-sports.io/leagues"
-            val response = httpClient.get(url).body<List<League>>()
-            onSuccessResponse(response)
+}
+
+private fun getLeagues(deporte:String, onSeccessResponse:(List<League>) -> Unit) {
+    if(deporte.isBlank()) return
+    val url = "https://v3.football.api-sports.io/leagues"
+
+    CoroutineScope(Dispatchers.IO).launch {
+        try {
+            val response = httpClient.get(url) {
+                header("x-rapidapi-key", "afe5fc65fe2756c7390d4ec0224c23f3")
+            }.body<LeagueResponse>()
+
+            val leagues = response.response.map {it.league }
+            onSeccessResponse(leagues)
+        } catch (e:Exception) {
+            onSeccessResponse(emptyList())
         }
     }
 }

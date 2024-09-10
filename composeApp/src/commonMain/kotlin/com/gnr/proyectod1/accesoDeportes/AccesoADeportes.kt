@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.gnr.proyectod1.SportsLeagueScreen
 import com.gnr.proyectod1.accesoDeportes.iu.BaloncestoScreen
 import com.gnr.proyectod1.accesoDeportes.iu.BeisbolScreen
 import com.gnr.proyectod1.accesoDeportes.iu.FutbolScreen
@@ -62,7 +63,7 @@ class AccesoADeportes : Screen {
             Row (modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp)) {
                 Box(modifier = Modifier.weight(1f).height(150.dp)) {
                     Button(onClick = {
-                        navigator.push(FutbolScreen())
+                        navigator.push(SportsLeagueScreen("Futbol"))
                     }) {
                         Box(modifier = Modifier.fillMaxSize()) {
                             Text("Futbol")
