@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.modifier.ModifierLocalReadScope
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -21,6 +22,8 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.gnr.proyectod1.accesoDeportes.iu.BaloncestoScreen
+import com.gnr.proyectod1.accesoDeportes.iu.BeisbolScreen
+import com.gnr.proyectod1.accesoDeportes.iu.FutbolScreen
 
 class AccesoADeportes : Screen {
     @Composable
@@ -46,8 +49,31 @@ class AccesoADeportes : Screen {
                     }
                 }
                 Spacer(modifier = Modifier.weight(0.05f))
+                Box(modifier = Modifier.weight(1f).height(150.dp)) {
+                    Button(onClick = {
+                        navigator.push(BeisbolScreen())
+                    }) {
+                        Box(modifier = Modifier.fillMaxSize()) {
+                            Text("Beisbol")
+                        }
+                    }
+                }
+            }
+            Row (modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp)) {
+                Box(modifier = Modifier.weight(1f).height(150.dp)) {
+                    Button(onClick = {
+                        navigator.push(FutbolScreen())
+                    }) {
+                        Box(modifier = Modifier.fillMaxSize()) {
+                            Text("Futbol")
+                        }
+                    }
+                }
+                Spacer(modifier = Modifier.weight(0.05f))
                 Spacer(modifier = Modifier.weight(1f))
             }
         }
     }
 }
+
+
