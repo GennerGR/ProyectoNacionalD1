@@ -1,6 +1,5 @@
 package com.gnr.proyectod1
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -67,13 +66,19 @@ class SportsLeagueScreen (private val deporte:String): Screen {
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    //
-                    items(leagueList) {  League ->
+                    //aña
+                    items(leagueList) {  League: League ->
                         Box(
-                            modifier = Modifier.background(color = Color.Black).padding(8.dp).fillMaxWidth()
+                            modifier = Modifier.padding(8.dp).fillMaxWidth().height(150.dp)
                         ) {
-                            Column {
-                                Text(League.name, color = Color.White)
+                            Column (horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                                Button(onClick = {
+
+                                }) {
+                                    Box(modifier = Modifier.weight(1f)){
+                                        Text(League.name, color = Color.White)
+                                    }
+                                }
                             }
                         }
                     }
@@ -92,7 +97,7 @@ class SportsLeagueScreen (private val deporte:String): Screen {
 
 private fun getLeagues(deporte:String, onSeccessResponse:(List<League>) -> Unit) {
     if(deporte.isBlank()) return
-    val url = "https://v3.football.api-sports.io/leagues"
+    val url = "https://v3.$deporte.api-sports.io/leagues"
 
     CoroutineScope(Dispatchers.IO).launch {
         try {
@@ -107,3 +112,8 @@ private fun getLeagues(deporte:String, onSeccessResponse:(List<League>) -> Unit)
         }
     }
 }
+
+
+
+
+

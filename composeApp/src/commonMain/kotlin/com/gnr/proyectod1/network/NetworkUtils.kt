@@ -14,10 +14,10 @@ object NetworkUtils {
         install(ContentNegotiation) {
             json(json = Json { ignoreUnknownKeys = true }, ContentType.Any)
         }
-        defaultRequest {
-            header("x-rapidapi-host", "v1.basketball.api-sports.io")
-            header("x-rapidapi-key", "afe5fc65fe2756c7390d4ec0224c23f3")
-        }
+//        defaultRequest {
+//            header("x-rapidapi-host", "v1.basketball.api-sports.io")
+//            header("x-rapidapi-key", "afe5fc65fe2756c7390d4ec0224c23f3")
+//        }
     }
 }
 

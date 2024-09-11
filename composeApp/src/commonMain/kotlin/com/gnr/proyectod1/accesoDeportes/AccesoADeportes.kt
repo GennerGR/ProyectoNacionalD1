@@ -63,7 +63,7 @@ class AccesoADeportes : Screen {
             Row (modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp)) {
                 Box(modifier = Modifier.weight(1f).height(150.dp)) {
                     Button(onClick = {
-                        navigator.push(SportsLeagueScreen("Futbol"))
+                        navigator.push(SportsLeagueScreen("FOOTBALL"))
                     }) {
                         Box(modifier = Modifier.fillMaxSize()) {
                             Text("Futbol")

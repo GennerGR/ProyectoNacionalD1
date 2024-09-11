@@ -34,7 +34,7 @@ class PantallaTipoSplash : Screen {
     @Composable
     fun SplashScreen(onTimeout: () -> Unit) {
         LaunchedEffect(Unit) {
-            delay(3000) // Espera 3 segundos
+            delay(2000) // Espera 3 segundos
             onTimeout()
         }
         Text("Cargando...", color = Color.White)
