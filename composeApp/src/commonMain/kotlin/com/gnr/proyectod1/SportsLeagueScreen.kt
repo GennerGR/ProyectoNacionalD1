@@ -1,5 +1,6 @@
 package com.gnr.proyectod1
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,6 +14,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Button
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -56,11 +58,16 @@ class SportsLeagueScreen(private val v: Int, private val deporte: String) : Scre
         }
 
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().background(color = Color.Black),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             if (loading) {
-                Text("cargando ligas...", color = Color.Black, modifier = Modifier.padding(16.dp))
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator(color = Color.White)
+                }
             } else {
                 Spacer(modifier = Modifier.height(16.dp))
                 LazyVerticalGrid(
@@ -81,7 +88,7 @@ class SportsLeagueScreen(private val v: Int, private val deporte: String) : Scre
                                 Button(onClick = {
 
                                 }) {
-                                    Box(modifier = Modifier.weight(1f)) {
+                                    Box(modifier = Modifier.fillMaxSize()) {
                                         Text(League.name, color = Color.White)
                                     }
                                 }

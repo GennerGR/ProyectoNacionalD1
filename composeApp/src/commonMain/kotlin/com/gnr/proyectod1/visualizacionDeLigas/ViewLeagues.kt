@@ -33,14 +33,14 @@ class ViewLeagues : Screen {
         ) {
             if (loading) {
                 Text(
-                    "cargando detalles de la liga...",
+                    "Cargando detalles de la liga...",
                     color = Color.White,
                     modifier = Modifier.padding(16.dp)
                 )
             } else {
                 Spacer(modifier = Modifier.height(16.dp))
                 LazyColumn(modifier = Modifier.fillMaxSize().padding(10.dp)) {
-
+                    //
                 }
             }
         }
