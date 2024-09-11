@@ -38,24 +38,27 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
 
-class SportsLeagueScreen (private val deporte:String): Screen {
+class SportsLeagueScreen(private val v: Int, private val deporte: String) : Screen {
 
     @Composable
     override fun Content() {
 
         val navigator = LocalNavigator.currentOrThrow
 
-        var leagueList by remember { mutableStateOf<List<League>>(emptyList())}
-        var loading by remember { mutableStateOf(true)}
+        var leagueList by remember { mutableStateOf<List<League>>(emptyList()) }
+        var loading by remember { mutableStateOf(true) }
 
         LaunchedEffect(deporte) {
-            getLeagues(deporte) {leagues ->
+            getLeagues(deporte, v) { leagues ->
                 leagueList = leagues
                 loading = false
             }
         }
 
-        Column (modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally ) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             if (loading) {
                 Text("cargando ligas...", color = Color.Black, modifier = Modifier.padding(16.dp))
             } else {
@@ -67,15 +70,18 @@ class SportsLeagueScreen (private val deporte:String): Screen {
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     //aña
-                    items(leagueList) {  League: League ->
+                    items(leagueList) { League: League ->
                         Box(
                             modifier = Modifier.padding(8.dp).fillMaxWidth().height(150.dp)
                         ) {
-                            Column (horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.Center
+                            ) {
                                 Button(onClick = {
 
                                 }) {
-                                    Box(modifier = Modifier.weight(1f)){
+                                    Box(modifier = Modifier.weight(1f)) {
                                         Text(League.name, color = Color.White)
                                     }
                                 }
@@ -95,19 +101,30 @@ class SportsLeagueScreen (private val deporte:String): Screen {
     }
 }
 
-private fun getLeagues(deporte:String, onSeccessResponse:(List<League>) -> Unit) {
-    if(deporte.isBlank()) return
-    val url = "https://v3.$deporte.api-sports.io/leagues"
+private fun getLeagues(deporte: String, v: Int, onSeccessResponse: (List<League>) -> Unit) {
+    if (deporte.isBlank()) return
+    val url = "https://v$v.$deporte.api-sports.io/leagues"
+//    val url = "https://v1.basketball.api-sports.io/leagues"
 
     CoroutineScope(Dispatchers.IO).launch {
         try {
+            println("Requesting leagues from: $url")
+
             val response = httpClient.get(url) {
                 header("x-rapidapi-key", "afe5fc65fe2756c7390d4ec0224c23f3")
             }.body<LeagueResponse>()
 
-            val leagues = response.response.map {it.league }
-            onSeccessResponse(leagues)
-        } catch (e:Exception) {
+            val leagues = response.response.map { it.toLeague() }
+
+            if (leagues.isNotEmpty()) {
+                onSeccessResponse(leagues)
+            } else {
+                println("No leagues found for $deporte")
+                onSeccessResponse(emptyList())
+            }
+
+        } catch (e: Exception) {
+            println("Error fetching leagues for $deporte: ${e.message}")
             onSeccessResponse(emptyList())
         }
     }

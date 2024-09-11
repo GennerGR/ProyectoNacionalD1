@@ -14,7 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.ModifierLocalReadScope
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,9 +21,6 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.gnr.proyectod1.SportsLeagueScreen
-import com.gnr.proyectod1.accesoDeportes.iu.BaloncestoScreen
-import com.gnr.proyectod1.accesoDeportes.iu.BeisbolScreen
-import com.gnr.proyectod1.accesoDeportes.iu.FutbolScreen
 
 class AccesoADeportes : Screen {
     @Composable
@@ -42,20 +38,20 @@ class AccesoADeportes : Screen {
             Row(modifier = Modifier.padding(horizontal = 20.dp)) {
                 Box(modifier = Modifier.weight(1f).height(150.dp)) {
                     Button(onClick = {
-                        navigator.push(BaloncestoScreen())
+                        navigator.push(SportsLeagueScreen(1,"baseball"))
                     }) {
                         Box(modifier = Modifier.fillMaxSize()) {
-                            Text("Baloncesto")
+                            Text("BASEBALL ")
                         }
                     }
                 }
                 Spacer(modifier = Modifier.weight(0.05f))
                 Box(modifier = Modifier.weight(1f).height(150.dp)) {
                     Button(onClick = {
-                        navigator.push(BeisbolScreen())
+                        navigator.push(SportsLeagueScreen(1,"basketball"))
                     }) {
                         Box(modifier = Modifier.fillMaxSize()) {
-                            Text("Beisbol")
+                            Text("BASKETBALL")
                         }
                     }
                 }
@@ -63,10 +59,10 @@ class AccesoADeportes : Screen {
             Row (modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp)) {
                 Box(modifier = Modifier.weight(1f).height(150.dp)) {
                     Button(onClick = {
-                        navigator.push(SportsLeagueScreen("FOOTBALL"))
+                        navigator.push(SportsLeagueScreen(3,"football"))
                     }) {
                         Box(modifier = Modifier.fillMaxSize()) {
-                            Text("Futbol")
+                            Text("FOOTBALL")
                         }
                     }
                 }
