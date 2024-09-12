@@ -90,7 +90,7 @@ class SportsLeagueScreen(private val v: Int, private val deporte: String) : Scre
                                     navigator.push(ViewDetailsLeagues())
                                 }) {
                                     Box(modifier = Modifier.fillMaxSize()) {
-                                        Text(League.name, color = Color.White)
+                                        Text(League.name ?: "Unknown", color = Color.White)
                                     }
                                 }
                             }
