@@ -32,6 +32,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.gnr.proyectod1.network.NetworkUtils.httpClient
 import com.gnr.proyectod1.network.model.League
 import com.gnr.proyectod1.network.model.LeagueResponse
+import com.gnr.proyectod1.viewDetailsLeagues.ViewDetailsLeagues
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.header
@@ -86,7 +87,7 @@ class SportsLeagueScreen(private val v: Int, private val deporte: String) : Scre
                                 verticalArrangement = Arrangement.Center
                             ) {
                                 Button(onClick = {
-
+                                    navigator.push(ViewDetailsLeagues())
                                 }) {
                                     Box(modifier = Modifier.fillMaxSize()) {
                                         Text(League.name, color = Color.White)
