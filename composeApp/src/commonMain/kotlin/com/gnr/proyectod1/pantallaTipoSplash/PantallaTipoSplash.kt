@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.material.Button
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -48,7 +47,11 @@ class PantallaTipoSplash : Screen {
             modifier = Modifier.fillMaxSize().background(color = Color.Black),
             contentAlignment = Alignment.Center
         ) {
-            Column (modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center){
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
                 CircularProgressIndicator(color = Color.White)
                 Spacer(modifier = Modifier.height(16.dp))
                 Text("Cargando deportes", color = Color.White, fontSize = 15.sp)
@@ -59,7 +62,7 @@ class PantallaTipoSplash : Screen {
     @Preview
     @Composable
     fun PreviewSplashScreen() {
-        SplashScreen(onTimeout = {  })
+        SplashScreen(onTimeout = { })
     }
 }
 
