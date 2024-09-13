@@ -41,7 +41,7 @@ class PantallaTipoSplash : Screen {
     @Composable
     fun SplashScreen(onTimeout: () -> Unit) {
         LaunchedEffect(Unit) {
-            delay(1500) // Espera 3 segundos
+            delay(1500)
             onTimeout()
         }
         Box(
