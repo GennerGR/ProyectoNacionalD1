@@ -41,7 +41,7 @@ class AccesoADeportes : Screen {
                         navigator.push(SportsLeagueScreen(1,"baseball"))
                     }) {
                         Box(modifier = Modifier.fillMaxSize()) {
-                            Text("BASEBALL ")
+                            Text("BASEBALL")
                         }
                     }
                 }
